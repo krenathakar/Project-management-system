@@ -22,24 +22,37 @@ namespace PMS.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public IActionResult Login(LoginViewModel model)
+        [HttpPost]
+public IActionResult Login(LoginViewModel model)
+{
+    if (ModelState.IsValid)
+    {
+        var user = _context.User.FirstOrDefault(u => u.Email == model.Email);
+        if (user != null)
         {
-            if (ModelState.IsValid)
+            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
+            if (result == PasswordVerificationResult.Success)
             {
-                var user = _context.User.FirstOrDefault(u => u.Email == model.Email);
-                if (user != null)
+                TempData["Success"] = "Login successful!";
+
+                // ✅ Redirect based on role
+                if (model.Role == "Admin")
                 {
-                    var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
-                    if (result == PasswordVerificationResult.Success)
-                    {
-                        TempData["Success"] = "Login successful!";
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Dashboard", "Admin");
                 }
-                ModelState.AddModelError("", "Invalid login attempt");
+                else if (model.Role == "User")
+                {
+                    return RedirectToAction("Dashboard", "User");
+                }
             }
-            return View(model);
         }
+        ModelState.AddModelError("", "Invalid login attempt");
+    }
+    return View(model);
+}
+
     }
 }
+
