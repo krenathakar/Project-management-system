@@ -37,6 +37,17 @@
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 
+                     <!-- New Role dropdown -->
+                    <div class="form-group mb-3">
+                        <label>Role *</label>
+                        <select asp-for="Role" class="form-select">
+                            <option value="">-- Select Role --</option>
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                        <span asp-validation-for="Role" class="text-danger"></span>
+                    </div>
+
                     <button type="submit" class="btn btn-primary w-100">Sign in</button>
 
                 </form>

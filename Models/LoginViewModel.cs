@@ -11,5 +11,10 @@ namespace PMS.Models
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         public required string Password { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public required string Role { get; set; } // User/Admin
+   
     }
 }
