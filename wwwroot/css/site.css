@@ -32,3 +32,60 @@ body {
 .navbar{
 background-color: #343a40;
 }
+.navbar .nav-link:hover {
+    color: #f8f9fa !important; /* lighter white on hover */
+}
+/* Custom Navbar Styling */
+.custom-navbar {
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 15px 15px;
+    transition: all 0.4s ease-in-out;
+    padding: 0.8rem 1rem;
+}
+
+/* Navbar Brand */
+.custom-navbar .navbar-brand {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Nav Links */
+.custom-navbar .nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect for Links */
+.custom-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Active Link Highlight */
+.custom-navbar .nav-link.active {
+    color: #ffd700 !important;
+    font-weight: 600;
+}
+
+/* Toggler Button */
+.navbar-toggler {
+    border: none;
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+}

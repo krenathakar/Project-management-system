@@ -10,6 +10,10 @@ namespace PMS.Data
 
 
         public DbSet<User> User { get; set; }
+
+        public DbSet<RegisterUser> RegisterUser { get; set; }
+
+        
         
         
     }

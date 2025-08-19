@@ -11,54 +11,66 @@
 </head>
 <body>
     <header>
-    <nav class="navbar navbar-expand-lg navbar-white bg- shadow-sm  style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg shadow-lg sticky-top"
+         style="background: linear-gradient(135deg, #4e54c8, #8f94fb); backdrop-filter: blur(10px);">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand fw-bold text-white"  asp-controller="Home" asp-action="Index">
-                <i class="bi bi-kanban-fill me-2"></i> PMS
+            <a class="navbar-brand fw-bold text-white d-flex align-items-center" asp-controller="Home" asp-action="Index"
+               style="font-size: 1.5rem; letter-spacing: 1px; transition: transform 0.3s ease;">
+                <i class="bi bi-kanban-fill me-2 fs-4"></i> 📑PMS
             </a>
 
             <!-- Toggler for mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Menu Items -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" asp-controller="Home" asp-action="Index">
-                            <i class="bi bi-house-door-fill me-1"></i> Home
+                        <a class="nav-link text-white fw-semibold px-3 py-2 rounded-3"
+                           style="transition: all 0.3s; position: relative;"
+                           asp-controller="Home" asp-action="Index">
+                            <i class="bi bi-house-door-fill me-1"></i> 🏡Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Home" asp-action="About">
-                            <i class="bi bi-info-circle-fill me-1"></i> About
+                        <a class="nav-link text-white fw-semibold px-3 py-2 rounded-3"
+                           style="transition: all 0.3s; position: relative;"
+                           asp-controller="Home" asp-action="About">
+                            <i class="bi bi-info-circle-fill me-1"></i> 🅰️About
                         </a>
                     </li>
-                </ul>
+        </header>
 
-                <!-- Right Side: Auth Links -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Account" asp-action="Login">
-                            <i class="bi bi-box-arrow-in-right me-1"></i> Login
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light text-primary fw-semibold ms-2" asp-controller="Account" asp-action="Register">
-                            <i class="bi bi-person-plus-fill me-1"></i> Register
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+
+ <style>
+     /* Hover glow effect */
+    .navbar-nav .nav-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffeb3b !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Brand hover bounce */
+    .navbar-brand:hover {
+        transform: scale(1.1);
+        color: #ffeb3b !important;
+    }
+
+    /* Active link underline effect */
+    .navbar-nav .nav-link.active {
+        border-bottom: 2px solid #ffeb3b;
+    }
+</style>
+
+@* ------------------------------------------------------------------------------------------------- *@
 
     <div class="container">
         <main role="main" class="pb-3">

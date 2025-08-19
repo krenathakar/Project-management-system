@@ -4,6 +4,7 @@ namespace PMS.Models
 {
     public class User
     {
+
         [Key] // Primary Key
         public int UserId { get; set; }
 
@@ -19,5 +20,6 @@ namespace PMS.Models
         [Required]
         [MaxLength(50)]
         public required string Role { get; set; } // User/Admin
+        
     }
 }

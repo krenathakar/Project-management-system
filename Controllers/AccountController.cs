@@ -1,58 +1,52 @@
 using Microsoft.AspNetCore.Mvc;
 using PMS.Data;
 using PMS.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
 
 namespace PMS.Controllers
 {
     public class AccountController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly PasswordHasher<User> _passwordHasher = new PasswordHasher<User>();
-
         public AccountController(AppDbContext context)
         {
             _context = context;
         }
 
-        [HttpGet]
+        // GET: Register
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // GET: Login
         public IActionResult Login()
         {
             return View();
         }
 
-
+        // POST: Login
         [HttpPost]
-        [HttpPost]
-public IActionResult Login(LoginViewModel model)
-{
-    if (ModelState.IsValid)
-    {
-        var user = _context.User.FirstOrDefault(u => u.Email == model.Email);
-        if (user != null)
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(LoginViewModel model)
         {
-            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
-            if (result == PasswordVerificationResult.Success)
+            if (ModelState.IsValid)
             {
-                TempData["Success"] = "Login successful!";
+                var user = _context.User
+                    .FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Password);
 
-                // ✅ Redirect based on role
-                if (model.Role == "Admin")
+                if (user != null)
                 {
-                    return RedirectToAction("Dashboard", "Admin");
+                    // ✅ Login success → redirect based on role
+                    if (user.Role == "Admin")
+                        return RedirectToAction("Dashboard", "Admin");
+                    else
+                        return RedirectToAction("Dashboard", "User");
                 }
-                else if (model.Role == "User")
-                {
-                    return RedirectToAction("Dashboard", "User");
-                }
+
+                ModelState.AddModelError("", "Invalid Email or Password");
             }
+
+            return View(model);
         }
-        ModelState.AddModelError("", "Invalid login attempt");
-    }
-    return View(model);
-}
-
     }
 }
-
