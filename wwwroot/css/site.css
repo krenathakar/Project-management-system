@@ -89,3 +89,25 @@ background-color: #343a40;
     background: rgba(255,255,255,0.2);
     border-radius: 8px;
 }
+.login-left {
+    background: url('/images/login-bg.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+}
+
+.login-left::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* dark overlay */
+}
+
+.login-left .overlay-text {
+    position: relative;
+    z-index: 2;
+}
+
+.login-form {
+    max-width: 450px;
+}

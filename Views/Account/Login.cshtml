@@ -1,4 +1,4 @@
-@model PMS.Models.LoginViewModel
+@model PMS.ViewModels.LoginVM
 @{
     ViewData["Title"] = "Sign in to PMS";
     
@@ -18,6 +18,10 @@
         </div>
 
         <!-- Right side -->
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div>@ViewBag.Message</div>
+}
         <div class="col-md-6 login-right d-flex align-items-center justify-content-center">
             <div class="login-form">
 
@@ -51,6 +55,10 @@
                     <button type="submit" class="btn btn-primary w-100">Sign in</button>
 
                 </form>
+                
+<!-- The “New user?” link you wanted -->
+<p>New user? <a asp-controller="Account" asp-action="Register">Create an account</a></p>
+
             </div>
         </div>
     </div>

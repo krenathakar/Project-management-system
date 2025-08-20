@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PMS.Controllers
 {
-    [Authorize(Roles = "User")]
-    public class UserController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
         public IActionResult Index() => View();
     }

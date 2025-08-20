@@ -7,16 +7,26 @@ namespace PMS.Data
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public DbSet<AppUser> Users => Set<AppUser>();
+
+        protected override void OnModelCreating(ModelBuilder b)
+        {
+            base.OnModelCreating(b);
+            b.Entity<AppUser>()
+             .HasIndex(u => u.Email)
+             .IsUnique();
+
+            
+        }
 
 
-        public DbSet<User> User { get; set; }
-
-        public DbSet<RegisterUser> RegisterUser { get; set; }
-
-        
-        
+         public DbSet<AppUser> AppUsers { get; set; }
         
     }
 
-   
-}
+  }
+
+        
+        
+        
+    

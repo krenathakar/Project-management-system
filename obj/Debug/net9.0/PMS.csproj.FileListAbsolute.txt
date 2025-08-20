@@ -10,6 +10,9 @@ F:\MCA Project\PMS\bin\Debug\net9.0\PMS.pdb
 F:\MCA Project\PMS\bin\Debug\net9.0\Azure.Core.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Azure.Identity.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Humanizer.dll
+F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.AspNetCore.Razor.Language.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Build.dll
@@ -41,6 +44,8 @@ F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstracti
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 F:\MCA Project\PMS\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
@@ -297,7 +302,7 @@ F:\MCA Project\PMS\obj\Debug\net9.0\compressed\3vm7nujw3t-1e2m7j2srg.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\yrf5ad6buk-zipk0q9xh7.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\9kewd2ew9b-50e9da3kp9.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\qa8i3ti3do-amfdnw117s.gz
-F:\MCA Project\PMS\obj\Debug\net9.0\compressed\fuuf4r21jd-vb9qhk8qoh.gz
+F:\MCA Project\PMS\obj\Debug\net9.0\compressed\fuuf4r21jd-ph3xswdi83.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\7a7px6p21s-61n19gt1b8.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\auhs64hkrx-vrk57bt7nk.gz
 F:\MCA Project\PMS\obj\Debug\net9.0\compressed\i23lwgh9fx-zg8p7es40w.gz
