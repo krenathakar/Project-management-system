@@ -105,11 +105,12 @@ namespace PMS.Controllers
 
         [Authorize]
         public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction(nameof(Login));
-        }
-
+          {
+        await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        return RedirectToAction("Login", "Account");
+         }
         public IActionResult AccessDenied() => View();
+
+       
     }
 }

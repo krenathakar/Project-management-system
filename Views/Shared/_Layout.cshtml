@@ -43,7 +43,23 @@
                             <i class="bi bi-info-circle-fill me-1"></i> 🅰️About
                         </a>
                     </li>
-                    
+             @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            <span class="nav-link">Hello, @User.Identity.Name</span>
+        </li>
+        <li class="nav-item">
+            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" 
+                                class="btn btn-danger px-4 py-2 fw-semibold rounded-pill shadow-sm 
+                                       d-flex align-items-center gap-2"
+                                style="transition: 0.3s ease;">
+                            <i class="bi bi-box-arrow-right"></i> Logout
+                        </button>
+            </form>
+        </li>
+    }
+</ul>
                     
         </header>
 
