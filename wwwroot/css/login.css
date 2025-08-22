@@ -4,10 +4,8 @@
 
 /* Left side with background image */
 .login-left {
-    background: url('/img/login-side-image.png') no-repeat center center;
+    background: url('/img/login.png') no-repeat center center;
     background-size: cover;
-    position: relative;
-    color: white;
 }
 
 .login-left .overlay-text {

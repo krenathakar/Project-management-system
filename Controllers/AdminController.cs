@@ -6,6 +6,14 @@ namespace PMS.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        public IActionResult Index() => View();
+        public IActionResult Index() 
+        {
+            ViewBag.Message = TempData["msg"];
+            return View();
+
+            ViewData["HideNavbar"] = true; // Hides navbar
+            return View();
+        }
+        
     }
 }

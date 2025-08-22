@@ -24,8 +24,15 @@ namespace PMS.Controllers
 
         // ---------- Register ----------
         [HttpGet]
-        public IActionResult Register() => View();
+        public IActionResult Register()
+        {
+            ViewBag.Message = TempData["msg"];
+            return View();
 
+            ViewData["HideFooter"] = true;
+             return View();
+        }
+        
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM model)
         {
@@ -60,7 +67,11 @@ namespace PMS.Controllers
         {
             ViewBag.Message = TempData["msg"];
             return View();
+
+            ViewData["HideFooter"] = true;
+             return View();
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model, string? returnUrl = null)
@@ -110,6 +121,8 @@ namespace PMS.Controllers
         return RedirectToAction("Login", "Account");
          }
         public IActionResult AccessDenied() => View();
+
+       
 
        
     }

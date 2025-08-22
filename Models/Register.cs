@@ -1,29 +1,27 @@
 using System.ComponentModel.DataAnnotations;
-using PMS.Models;
+using Microsoft.AspNetCore.Identity;
 
-namespace PMS.ViewModels
+namespace PMS.Models
 {
-    public class RegisterVM
+    public class Register
     {
+        [Key]
+         public int Id { get; set; }
+
         [Required, StringLength(80)]
         public string FullName { get; set; } = "";
 
         [Required, EmailAddress]
         public string Email { get; set; } = "";
 
-        [Required, DataType(DataType.Password), MaxLength(6)]
+        [Required, DataType(DataType.Password), MinLength(6)]
         public string Password { get; set; } = "";
 
-        [Required, DataType(DataType.Password), Compare(nameof(Password)),MaxLength(6)]
+        [Required, DataType(DataType.Password), Compare(nameof(Password))]
         public string ConfirmPassword { get; set; } = "";
-
-        [MaxLength(10)]
-        public string PhoneNo {get;set;}="";
-
-        [MaxLength(6)]
-        public string Gender {get;set;}="";
 
         [Required]
         public Role Role { get; set; }
     }
+
 }
