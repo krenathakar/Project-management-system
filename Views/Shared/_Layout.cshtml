@@ -18,7 +18,7 @@
 <!-- ✅ Only render navbar if NOT in Login/Register/ForgotPassword/Dashboard -->
 @if (!(currentController == "Account" && 
        (currentAction == "Login" || currentAction == "Register" ))
-    && !(currentController == "Dashboard"))
+    && !(currentController == "UserDashboard"||currentController == "AdminDashboard"))
 {
 <header>
     <nav class="navbar navbar-expand-lg shadow-lg sticky-top"

@@ -1,5 +1,62 @@
 @{
+    Layout = null;
     ViewData["Title"] = "User Dashboard";
 }
-<h2>User Dashboard</h2>
-<p>Welcome, @User.Identity?.Name!</p>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: Arial, sans-serif;
+        }
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 220px;
+            background: #4e54c8;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h4 {
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .sidebar a:hover {
+            background: #3b40a4;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h4>User Dashboard</h4>
+            <a href="#">My Tasks</a>
+            <a href="#">Projects</a>
+            <a href="#">Profile</a>
+            <a href="/Account/Logout">Logout</a>
+        </div>
+        <div class="content">
+            <h2>Welcome, @User.Identity?.Name!</h2>
+            <p>This is your user dashboard.</p>
+        </div>
+    </div>
+</body>
+</html>
