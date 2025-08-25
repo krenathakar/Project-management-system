@@ -12,7 +12,7 @@ using PMS.Data;
 namespace PMS.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250820150052_InitialCreate")]
+    [Migration("20250825175415_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

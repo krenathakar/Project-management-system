@@ -114,6 +114,73 @@ namespace PMS.Controllers
                 : RedirectToAction("Index", "User");
         }
 
+        // ---------- 🔹 Forgot Password ----------
+        [HttpGet]
+        public IActionResult ForgotPassword() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var email = model.Email.Trim().ToLower();
+            var user = await _ctx.Users.SingleOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email not registered.");
+                return View(model);
+            }
+
+            // Instead of email, generate reset link and show on screen
+            var token = Guid.NewGuid().ToString(); // simple token
+            TempData["ResetToken"] = token;
+            TempData["ResetEmail"] = user.Email;
+
+            // Redirect to a page that shows reset link
+            return RedirectToAction(nameof(DisplayResetLink));
+        }
+
+        [HttpGet]
+        public IActionResult DisplayResetLink()
+        {
+            var token = TempData["ResetToken"]?.ToString();
+            var email = TempData["ResetEmail"]?.ToString();
+
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(email))
+                return RedirectToAction(nameof(ForgotPassword));
+
+            var resetLink = Url.Action("ResetPassword", "Account", new { token, email }, Request.Scheme);
+            ViewBag.ResetLink = resetLink;
+
+            return View();
+        }
+
+        // ---------- 🔹 Reset Password ----------
+        [HttpGet]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(email))
+                return RedirectToAction(nameof(Login));
+
+            return View(new ResetPasswordVM { Token = token, Email = email });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = await _ctx.Users.SingleOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null) return RedirectToAction(nameof(Login));
+
+            // update password
+            user.PasswordHash = _hasher.HashPassword(user, model.Password);
+            await _ctx.SaveChangesAsync();
+
+            TempData["msg"] = "Password reset successful. Please sign in.";
+            return RedirectToAction(nameof(Login));
+        }
+
         [Authorize]
         public async Task<IActionResult> Logout()
           {

@@ -17,7 +17,7 @@ namespace PMS.Models
         public string FullName { get; set; } = "";
 
         [Required, EmailAddress, StringLength(120)]
-        public string Email { get; set; } = "";
+        public override string Email { get; set; } = "";
 
         [Required] // store a hash, not plain text
         public string PasswordHash { get; set; } = "";
