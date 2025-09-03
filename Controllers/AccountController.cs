@@ -39,12 +39,12 @@ namespace PMS.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var email = model.Email.Trim().ToLower();
-            if (await _ctx.Users.AnyAsync(u => u.Email == email))
+            if (await _ctx.AppUsers.AnyAsync(u => u.Email == email))
             {
                 ModelState.AddModelError(nameof(model.Email), "Email already registered.");
                 return View(model);
             }
-
+            
             var user = new AppUser
             {
                 FullName = model.FullName.Trim(),
@@ -54,7 +54,7 @@ namespace PMS.Controllers
 
             user.PasswordHash = _hasher.HashPassword(user, model.Password);
 
-            _ctx.Users.Add(user);
+            _ctx.AppUsers.Add(user);
             await _ctx.SaveChangesAsync();
 
             TempData["msg"] = "Registration successful. Please sign in.";
@@ -79,7 +79,7 @@ namespace PMS.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var email = model.Email.Trim().ToLower();
-            var user = await _ctx.Users.SingleOrDefaultAsync(u => u.Email == email);
+            var user = await _ctx.AppUsers.SingleOrDefaultAsync(u => u.Email == email);
             if (user == null || user.Role != model.Role)
             {
                 ModelState.AddModelError("", "Invalid email/role or password.");
@@ -111,7 +111,7 @@ namespace PMS.Controllers
             // Redirect to role dashboards
             return user.Role == Role.Admin
                 ? RedirectToAction("Index", "Admin")
-                : RedirectToAction("Index", "User");
+                : RedirectToAction("Index", "ProjectManager");
         }
 
         // ---------- 🔹 Forgot Password ----------
@@ -124,7 +124,7 @@ namespace PMS.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var email = model.Email.Trim().ToLower();
-            var user = await _ctx.Users.SingleOrDefaultAsync(u => u.Email == email);
+            var user = await _ctx.AppUsers.SingleOrDefaultAsync(u => u.Email == email);
             if (user == null)
             {
                 ModelState.AddModelError("", "Email not registered.");
@@ -170,7 +170,7 @@ namespace PMS.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            var user = await _ctx.Users.SingleOrDefaultAsync(u => u.Email == model.Email);
+            var user = await _ctx.AppUsers.SingleOrDefaultAsync(u => u.Email == model.Email);
             if (user == null) return RedirectToAction(nameof(Login));
 
             // update password

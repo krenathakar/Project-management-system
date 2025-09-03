@@ -1,0 +1,83 @@
+ @* Views/Shared/_AdminLayout.cshtml *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #eef1f7;
+            font-family: Arial, sans-serif;
+        }
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 220px;
+            background: #2d3436;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h4 {
+            margin-bottom: 20px;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .sidebar a:hover {
+            background: #636e72;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+        }
+        .topbar .search-box {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 8px 14px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+        }
+        .topbar .right-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h4>Admin Dashboard</h4>
+            <a href="#">Dashboard</a>
+            <a asp-controller="Admin" asp-action="ManageUsers">Manage users</a>
+            <a href="#">Projects</a>
+            <a href="#">Reports</a>
+            <a href="/Account/Logout">Logout</a>
+        </div>
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Topbar -->
+            <div class="topbar">
+                <div class="search-box">
+                    <input type="text" placeholder="🔍 Search projects, tasks, or team members..."> 
+                </div>
+                
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+   @* @await RenderSectionAsync("Scripts", required: false) *@
+</body>
+</html>
+@await RenderSectionAsync("Scripts", required: false)

@@ -22,7 +22,7 @@
 {
 <header>
     <nav class="navbar navbar-expand-lg shadow-lg sticky-top"
-         style="background: linear-gradient(135deg, #4e54c8, #8f94fb); backdrop-filter: blur(10px);">
+         style="background: linear-gradient(135deg, #242a62ff, #212359ff); backdrop-filter: blur(10px);">
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand fw-bold text-white d-flex align-items-center" 
@@ -53,6 +53,7 @@
                         </a>
                     </li>
                     
+                    
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
@@ -67,6 +68,7 @@
                                 </button>
                             </form>
                         </li>
+                        
                     }
                 </ul>
             </div>

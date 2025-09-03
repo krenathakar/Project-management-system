@@ -53,5 +53,33 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+using (var scope = app.Services.CreateScope())
+{
+    var ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    if (!ctx.Users.Any(u => u.Role == Role.Admin))
+    {
+        var hasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher<AppUser>>();
+
+        var admin = new AppUser
+        {
+            FullName = "Super Admin",
+            Email = "admin@example.com",
+            Role = Role.Admin
+        };
+
+        admin.PasswordHash = hasher.HashPassword(admin, "Admin@123");
+        ctx.Users.Add(admin);
+        ctx.SaveChanges();
+    }
+}
+
+
+
+
+
+
+
+
+
 
 app.Run();

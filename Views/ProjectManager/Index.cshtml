@@ -127,13 +127,22 @@
         <div class="sidebar">
             <h4>PMS - Project Management System</h4>
             <a href="#">📊 Dashboard</a>
-            <a href="#">📁 Projects</a>
+            <a asp-controller="Projects" asp-action="Index">📁 Projects</a>
             <a href="#">📝 Tasks</a>
             <a href="#">👥 Team</a>
             <a href="#">📈 Reports</a>
             <a href="#">⚙ Settings</a>
             <a href="/Account/Logout">🚪 Logout</a>
         </div>
+        <div class="container">
+    <h2>Dashboard</h2>
+
+    <button class="btn btn-primary" id="btnLoadProjects">Load Projects</button>
+
+    <!-- Placeholder where projects will appear -->
+    <div id="projectsContainer" class="mt-4"></div>
+</div>
+
 
         <!-- Main Content -->
         <div class="content">
@@ -168,3 +177,13 @@
     </div>
 </body>
 </html>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $("#btnLoadProjects").click(function () {
+            $.get("/Projects/LoadProjects", function (data) {
+                $("#projectsContainer").html(data);
+            });
+        });
+    </script>
+}

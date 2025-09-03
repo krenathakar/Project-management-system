@@ -1,62 +1,44 @@
+@model IEnumerable<PMS.Models.AppUser>
 @{
-    Layout = null;
-    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewData["Title"]</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {
-            background: #eef1f7;
-            font-family: Arial, sans-serif;
-        }
-        .dashboard-container {
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 220px;
-            background: #2d3436;
-            color: white;
-            padding: 20px;
-        }
-        .sidebar h4 {
-            margin-bottom: 20px;
-        }
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 10px;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-        .sidebar a:hover {
-            background: #636e72;
-        }
-        .content {
-            flex-grow: 1;
-            padding: 20px;
-            background: #fff;
-        }
-    </style>
-</head>
-<body>
-    <div class="dashboard-container">
-        <div class="sidebar">
-            <h4>Admin Dashboard</h4>
-            <a href="#">Manage Users</a>
-            <a href="#">Projects</a>
-            <a href="#">Reports</a>
-            <a href="/Account/Logout">Logout</a>
-        </div>
-        <div class="content">
-            <h2>Welcome, @User.Identity?.Name!</h2>
-            <p>This is your admin dashboard.</p>
-        </div>
-    </div>
-</body>
-</html>
+<h2>Manage Users</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New User</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Contact</th>
+            <th>Created</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var u in Model)
+    {
+        <tr>
+            <td>@u.FullName</td>
+            <td>@u.Email</td>
+            <td>@u.Role</td>
+            <td>@u.ContactNo</td>
+            <td>@u.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd")</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@u.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <form asp-action="Delete" method="post" style="display:inline;" 
+                  onsubmit="return confirm('Are you sure you want to delete @u.FullName (@u.Email)?');">
+                <input type="hidden" name="id" value="@u.Id" />
+                <button type="submit" class="btn btn-danger btn-sm">🗑 Delete</button>
+            </form>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

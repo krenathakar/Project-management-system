@@ -15,13 +15,14 @@ namespace PMS.Data
             b.Entity<AppUser>()
              .HasIndex(u => u.Email)
              .IsUnique();
-
             
+
+
         }
 
 
-         public DbSet<AppUser> AppUsers { get; set; }
-          
+        public DbSet<AppUser> AppUsers { get; set; }
+                   
     }
 
   }
