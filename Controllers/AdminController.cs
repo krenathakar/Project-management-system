@@ -35,7 +35,7 @@ namespace PMS.Controllers
         // CREATE - GET
         public IActionResult Create()
         {
-            return View();
+            return PartialView("_CreateUser");
         }
 
         // CREATE - POST
@@ -51,6 +51,7 @@ namespace PMS.Controllers
                 ModelState.AddModelError(nameof(vm.Email), "Email already exists.");
                 return View(vm);
             }
+            
 
             var user = new AppUser
             {
@@ -69,25 +70,26 @@ namespace PMS.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        
 
-        // EDIT - GET
-        public async Task<IActionResult> Edit(int id)
-        {
-            var user = await _ctx.AppUsers.FindAsync(id);
-            if (user == null) return NotFound();
+public async Task<IActionResult> Edit(int id)
+{
+    var user = await _ctx.AppUsers.FindAsync(id);
+    if (user == null) return NotFound();
 
-            var vm = new AdminEditUserVM
-            {
-                Id = user.Id,
-                FullName = user.FullName,
-                Email = user.Email,
-                Role = user.Role,
-                Gender = user.Gender,
-                Address = user.Address,
-                ContactNo = user.ContactNo
-            };
-            return View(vm);
-        }
+    var vm = new AdminEditUserVM
+    {
+        Id = user.Id,
+        FullName = user.FullName,
+        Email = user.Email,
+        Role = user.Role,
+        Gender = user.Gender,
+        Address = user.Address,
+        ContactNo = user.ContactNo
+    };
+    return PartialView("_EditUser", vm);
+}
+
 
         // EDIT - POST
         [HttpPost]
