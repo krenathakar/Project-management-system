@@ -52,8 +52,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/MCA Project/PMS/Views/Admin/DeleteProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlUHJvamVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/MCA Project/PMS/Views/Admin/EditProject.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFByb2plY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/MCA Project/PMS/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/MCA Project/PMS/Views/Admin/ProjectDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvamVjdERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/MCA Project/PMS/Views/Admin/Projects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvamVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/MCA Project/PMS/Views/Admin/_CreateUser.cshtml]
