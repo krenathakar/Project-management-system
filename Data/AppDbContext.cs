@@ -22,6 +22,7 @@ namespace PMS.Data
 
 
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Project> Projects { get; set; }
                    
     }
 
