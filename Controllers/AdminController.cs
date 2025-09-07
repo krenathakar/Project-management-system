@@ -28,6 +28,12 @@ namespace PMS.Controllers
             var users = await _ctx.AppUsers.OrderByDescending(u => u.CreatedAt).ToListAsync();
             return View(users);
         }
+        public async Task<IActionResult> ManageUsers(string tab = "ManageUsers")
+        {
+            var users = await _ctx.AppUsers.OrderByDescending(u => u.CreatedAt).ToListAsync();
+            return View(users);
+        }
+
 
         // CREATE USER - GET
         public IActionResult Create()
@@ -133,7 +139,7 @@ namespace PMS.Controllers
         // ===================== PROJECTS SECTION =====================
 
         // ✅ Projects list
-        public IActionResult Projects()
+        public IActionResult Projects(string tab ="Projects")
         {
             var projects = _ctx.Projects.ToList();
             return View(projects);
