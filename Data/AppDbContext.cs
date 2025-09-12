@@ -15,7 +15,7 @@ namespace PMS.Data
             b.Entity<AppUser>()
              .HasIndex(u => u.Email)
              .IsUnique();
-            
+
 
 
         }
@@ -23,6 +23,8 @@ namespace PMS.Data
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Project> Projects { get; set; }
+       
+       
                    
     }
 

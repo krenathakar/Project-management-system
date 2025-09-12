@@ -139,7 +139,7 @@ namespace PMS.Controllers
         // ===================== PROJECTS SECTION =====================
 
         // ✅ Projects list
-        public IActionResult Projects(string tab ="Projects")
+        public IActionResult Projects(string tab = "Projects")
         {
             var projects = _ctx.Projects.ToList();
             return View(projects);
@@ -194,5 +194,8 @@ namespace PMS.Controllers
             }
             return RedirectToAction("Projects");
         }
+
+        
+
     }
 }
